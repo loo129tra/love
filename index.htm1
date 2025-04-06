@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Любовь Артёму</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #add8e6, #ffc0cb);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 600px;
+      margin: 80px auto;
+    }
+
+    .neon-text {
+      color: #ff69b4;
+      font-size: 2.5em;
+      text-shadow:
+        0 0 5px #ff69b4,
+        0 0 10px #ff69b4,
+        0 0 20px #ff69b4,
+        0 0 40px #ff69b4;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #87CEFA;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #00bfff;
+    }
+
+    .angel-heart {
+      display: none;
+      margin-top: 30px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .hearts {
+      position: absolute;
+      top: 10%;
+      left: 0;
+      right: 0;
+      font-size: 3em;
+      animation: float 6s infinite ease-in-out;
+      color: #ffb6c1;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    .money {
+      position: fixed;
+      top: -50px;
+      font-size: 2em;
+      color: green;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">♥️ ♥️ ♥️ ♥️ ♥️</div>
+  <div class="container">
+    <p class="neon-text">Артём, я тебя люблю</p>
+    <button class="btn" onclick="showAngelHeart()">Нажми</button>
+    <img id="angelHeart" class="angel-heart" src="https://i.imgur.com/FDdZKDn.png" alt="Сердце с ангелами" width="300">
+  </div>
+
+  <script>
+    function showAngelHeart() {
+      document.getElementById('angelHeart').style.display = 'block';
+    }
+
+    function createMoney() {
+      const money = document.createElement('div');
+      money.classList.add('money');
+      money.innerText = '💵';
+      money.style.left = Math.random() * 100 + 'vw';
+      money.style.animationDuration = 2 + Math.random() * 3 + 's';
+      document.body.appendChild(money);
+      setTimeout(() => money.remove(), 5000);
+    }
+
+    setInterval(createMoney, 300);
+  </script>
+</body>
+</html>
